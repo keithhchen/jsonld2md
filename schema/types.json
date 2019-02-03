@@ -1,0 +1,10 @@
+{
+  "http://www.pearltrees.com/rdf/0.1/#Note": "Note",
+  "http://www.pearltrees.com/rdf/0.1/#Tree": "Tree",
+  "http://xmlns.com/foaf/0.1/Person": "Person",
+  "http://www.pearltrees.com/rdf/0.1/#RootPearl": "RootPearl",
+  "http://rdfs.org/sioc/ns#UserAccount": "UserAccount",
+  "http://www.pearltrees.com/rdf/0.1/#PagePearl": "PagePearl",
+  "http://www.pearltrees.com/rdf/0.1/#SectionPearl": "SectionPearl",
+  "http://www.pearltrees.com/rdf/0.1/#RefPearl": "RefPearl"
+}

@@ -1,0 +1,19 @@
+{
+  "title": "http://purl.org/dc/elements/1.1/title",
+  "parent": {
+    "@id": "http://www.pearltrees.com/rdf/0.1/#parentTree",
+    "@type": "@id"
+  },
+  "identifier": "http://purl.org/dc/elements/1.1/identifier",
+  "createTime": "http://www.pearltrees.com/rdf/0.1/#inTreeSinceDate",
+  "leftPos": "http://www.pearltrees.com/rdf/0.1/#leftPos",
+  "rightPos": "http://www.pearltrees.com/rdf/0.1/#rightPos",
+  "seeAlso": {
+    "@id": "http://www.w3.org/2000/01/rdf-schema#seeAlso",
+    "@type": "@id"
+  },
+  "creator": {
+    "@id": "http://purl.org/dc/elements/1.1/creator",
+    "@type": "@id"
+  }
+}
