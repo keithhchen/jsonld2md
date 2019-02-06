@@ -99,7 +99,7 @@ class TreeNode {
 
   /**
    * Retrieves an array of child nodes of a parent. 
-   * @param {*} parent - Parent node.
+   * @param {object} parent - Parent node.
    * @param {boolean} [isDeepSearch=true] - Option to recurse for all child nodes. 
    * @returns {array} - Array of child nodes.
    * @memberof TreeNode
