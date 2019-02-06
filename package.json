@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "./.git"
+    "url": "https://github.com/keithhchen/jsonld2md.git"
   },
   "author": "Keith Chen",
   "license": "ISC",
   "dependencies": {
-    "json2md": "^1.6.2",
+    "json2md": "git+https://github.com/keithhchen/json2md.git",
     "jsonld": "^1.5.1",
     "nodemon": "^1.18.9"
   }
