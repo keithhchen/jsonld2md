@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "NODE_ENV=prod nodemon app.js",
+    "dev": "NODE_ENV=dev nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,8 @@
   "dependencies": {
     "json2md": "git+https://github.com/keithhchen/json2md.git",
     "jsonld": "^1.5.1",
-    "nodemon": "^1.18.9"
+    "nodemon": "^1.18.9",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
   }
 }
