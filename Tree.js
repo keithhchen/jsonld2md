@@ -14,16 +14,16 @@ const debug = process.env.NODE_ENV === "dev"
 /**
  *
  *
- * @class TreeNode
+ * @class Tree
  */
-class TreeNode {
+class Tree {
   /**
-   * Creates an instance of TreeNode.
+   * Creates an instance of Tree.
    * @constructor
    * @param {string} json - Raw JSON-LD data to be parsed. 
-   * @memberof TreeNode
+   * @memberof Tree
    */
-  constructor() {
+  constructor(raw) {
     this.jsonDir = "./json"
     if (!fs.existsSync(this.jsonDir)) {
       fs.mkdirSync(this.jsonDir)
@@ -32,7 +32,7 @@ class TreeNode {
     this.node = ""
     this.dir = ""
     this.fileCount = 0
-    this.jsonld = ""
+    this.jsonld = raw
 
     if (cluster.isMaster) {
 
@@ -58,7 +58,7 @@ class TreeNode {
   /**
    *
    * Parses raw JSON-LD as readable, nested JSON. 
-   * @memberof TreeNode
+   * @memberof Tree
    */
   async parse() {
     const compacted = await jsonld.compact(this.jsonld, contextSchema)
@@ -72,7 +72,7 @@ class TreeNode {
   /**
    * Extracts a topic as JSON and writes to file. 
    * @param {string} title - Title of topic to be extracted as JSON and name of directory. 
-   * @memberof TreeNode
+   * @memberof Tree
    */
   write(title) {
     this.dir = "/" + title
@@ -98,7 +98,7 @@ class TreeNode {
   /**
    * @param {string} dir - Subdirectory name.
    * @param {string} title - JSON file title.
-   * @memberof TreeNode
+   * @memberof Tree
    */
   async parseNodes(node) {
 
@@ -117,7 +117,7 @@ class TreeNode {
    * Writes JSON to file. 
    * @param {string} fileName
    * @param {object} obj
-   * @memberof TreeNode
+   * @memberof Tree
    */
   writeFile(fileName, obj) {
     const dirName = this.jsonDir + this.dir
@@ -138,7 +138,7 @@ class TreeNode {
    * @param {string} title
    * @param {string} type
    * @returns {object} - Search result. 
-   * @memberof TreeNode
+   * @memberof Tree
    */
   getNode(title, type) {
     return this.node.filter(node => node.title === title && node.type === type)[0]
@@ -149,7 +149,7 @@ class TreeNode {
    * @param {object} parent - Parent node.
    * @param {boolean} - Option to recurse for all child nodes. 
    * @returns {array} - Array of child nodes.
-   * @memberof TreeNode
+   * @memberof Tree
    */
   getNodes(parent, isDeepSearch = true) {
     let pid = parent["@id"]
@@ -169,7 +169,7 @@ class TreeNode {
    * Checks if a node is a valid child type. 
    * @param {string} type
    * @returns {boolean}
-   * @memberof TreeNode
+   * @memberof Tree
    */
   isChild(type) {
     const notAllowed = ["RootPearl", "SectionPearl", "UserAccount", "Note", "Tree", "Person"]
@@ -177,4 +177,4 @@ class TreeNode {
   }
 }
 
-module.exports = TreeNode
+module.exports = Tree

@@ -1,4 +1,4 @@
-var request = require('request-promise-native');
+const request = require('request-promise-native')
 
 function sortByAlphabet(node) {
   return node.sort((a, b) => {
@@ -42,15 +42,18 @@ async function checkUrl(nodes) {
   if (nodes.identifier) {
     const isExists = await isUrl(nodes.identifier)
     if (!isExists) {
+      console.log("deleting: " + node.identifier)
       delete nodes.identifier
     }
   }
   if (nodes.length) {
-    for (let node of nodes) {
+    for (let i = 0; i < nodes.length; i++) {
+      let node = nodes[i]
       if (node.identifier) {
         const isExists = await isUrl(node.identifier)
         if (!isExists) {
-          delete node.identifier
+          console.log(`deleting: ${node.title} ${node.identifier}`)
+          nodes.splice(i, 1)
         }
       }
       if (node.nodes) {
