@@ -33,6 +33,7 @@ class Markdown {
 
   static toHeading(title, heading) {
     const headings = ["h1", "h2", "h3", "h4", "h5", "h6"]
+    if (heading >= headings.length) heading = headings.length - 1
     const obj = {}
     Object.defineProperty(obj, headings[heading], {
       value: title,
@@ -50,7 +51,8 @@ class Markdown {
     }
   }
 
-  writeFile() {
+  write() {
+    this.convert()
     fs.writeFileSync(`${this.dir}/${this.filename}.md`, this.md)
   }
 }
