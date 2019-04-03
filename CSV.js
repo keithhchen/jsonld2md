@@ -26,9 +26,9 @@ module.exports = class CSV extends File {
         this.gender()
         this.primaryRole()
         this.link(node.identifier)
+        this.backspace()
+        this.lineBreak()
       }
-      this.backspace()
-      this.lineBreak()
 
       if (node.nodes && node.nodes.length) {
         this.parse(node.nodes, name)
