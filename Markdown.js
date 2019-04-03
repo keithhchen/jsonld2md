@@ -1,18 +1,13 @@
 const json2md = require("json2md")
 const fs = require("fs")
 const path = require("path")
-class Markdown {
+const File = require("./File")
+module.exports = class Markdown extends File {
   constructor(json) {
-    this.json = require(json)
-    this.filename = path.basename(json, path.extname(json))
-    this.md = ""
-    this.dir = "./md"
-    if (!fs.existsSync(this.dir)) {
-      fs.mkdirSync(this.dir)
-    }
+    super(json, "./md")
   }
   convert() {
-    this.md = json2md(this.parse(this.json))
+    this.export = json2md(this.parse(this.json))
   }
   parse(nodes, heading = 0) {
     const obj = nodes.map(node => {
@@ -53,8 +48,6 @@ class Markdown {
 
   write() {
     this.convert()
-    fs.writeFileSync(`${this.dir}/${this.filename}.md`, this.md)
+    super.write(`${this.filename}.md`)
   }
 }
-
-module.exports = Markdown
